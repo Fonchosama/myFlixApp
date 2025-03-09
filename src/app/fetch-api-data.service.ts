@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-//Declaring the api url that will provide data for the client app
+//Declaring the api url that will provide data for the client
 const apiUrl = 'https://gianflix-02d504c4ae81.herokuapp.com';
 
 @Injectable({
