@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+import { LoginViewComponent } from './login-view/login-view.component';
 
 @NgModule({
   // declarations: [
@@ -34,6 +35,9 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
     MatSnackBarModule,
       ],
   providers: [],
+  declarations: [
+    LoginViewComponent
+  ],
   
   // bootstrap: [AppComponent]
 })
