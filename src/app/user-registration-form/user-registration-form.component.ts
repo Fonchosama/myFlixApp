@@ -43,6 +43,12 @@ registerUser(): void {
         duration: 2000
      });
     }, (result) => {
+      console.log(result);
+      // if (result.data) {
+      //   this.snackBar.open("User registered successfully!", 'OK', {
+      //     duration: 2000
+      //   });
+      // }
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });

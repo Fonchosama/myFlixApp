@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client
-const apiUrl = 'https://gianflix-02d504c4ae81.herokuapp.com';
+const apiUrl = 'https://gianflix-02d504c4ae81.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +26,12 @@ export class UserRegistrationService {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .post(apiUrl + 'login', userDetails, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
         map((response) => {
-          console.log('Registration successful:', response);
+          console.log('Login successful:', response);
           return response;
         }),
         catchError(this.handleError),

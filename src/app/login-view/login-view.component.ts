@@ -34,6 +34,9 @@ export class LoginViewComponent {
      }
      userLogin(): void {
       this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+        localStorage.setItem('currenUser', JSON.stringify(result.user));
+        localStorage.setItem('token', result.token);
+        console.log("the user has been logged in and the token was stored in the local storage");
     // Logic for a successful user registration goes here! (To be implemented)
        this.dialogRef.close(); // This will close the modal on success!
        this.snackBar.open(result, 'OK', {
