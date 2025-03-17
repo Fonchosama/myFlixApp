@@ -41,6 +41,9 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     AppComponent,
     WelcomePageComponent,
+    RouterModule,
+    RouterModule.forRoot(appRoutes),
+    MovieCardComponent
       ],
   providers: [],
   declarations: [

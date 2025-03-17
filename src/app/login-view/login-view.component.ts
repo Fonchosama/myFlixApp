@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-view',
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
       MatFormFieldModule,
       MatInputModule,
       MatButtonModule,
-      FormsModule
+      FormsModule,
+      RouterModule
     ]
 
 })
@@ -28,7 +30,8 @@ export class LoginViewComponent {
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<LoginViewComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+  private router: Router) { }
 
   ngOnInit(): void {
      }
@@ -42,6 +45,7 @@ export class LoginViewComponent {
        this.snackBar.open(result, 'OK', {
           duration: 2000
        });
+       this.router.navigate(['movies']);
       }, (result) => {
         this.snackBar.open(result, 'OK', {
           duration: 2000
