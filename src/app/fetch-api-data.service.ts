@@ -41,11 +41,11 @@ export class UserRegistrationService {
 
   //Get all movies logic here
 
-  public getAllMovies(userDetails: any): Observable<any> {
+  public getAllMovies(userDetails?: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .post(apiUrl + 'u', userDetails, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
