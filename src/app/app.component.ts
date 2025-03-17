@@ -9,7 +9,7 @@ import { LoginViewComponent } from './login-view/login-view.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: []
+  // imports: [UserRegistrationFormComponent, LoginViewComponent, AppComponent,]
 })
 export class AppComponent {
   title = 'myFlix-Angular-client';

@@ -33,12 +33,10 @@ import { LoginViewComponent } from './login-view/login-view.component';
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    LoginViewComponent,
+    UserRegistrationFormComponent,
+    AppComponent,
       ],
   providers: [],
-  declarations: [
-    LoginViewComponent
-  ],
-  
-  // bootstrap: [AppComponent]
 })
 export class AppModule { }
