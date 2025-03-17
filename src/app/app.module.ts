@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,10 +34,11 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
     LoginViewComponent,
     UserRegistrationFormComponent,
     AppComponent,
+    WelcomePageComponent,
       ],
   providers: [],
   declarations: [
-    WelcomePageComponent
+   
   ],
 })
 export class AppModule { }
