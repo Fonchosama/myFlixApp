@@ -25,6 +25,7 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'}
 ]
 @NgModule({
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -47,7 +48,6 @@ const appRoutes: Routes = [
       ],
   providers: [],
   declarations: [
-   
-  ],
+    ],
 })
 export class AppModule { }
