@@ -17,10 +17,6 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { LoginViewComponent } from './login-view/login-view.component';
 
 @NgModule({
-  // declarations: [
-  //   AppComponent,
-  //   UserRegistrationFormComponent
-  // ],
   imports: [
     BrowserModule,
     AppRoutingModule,
