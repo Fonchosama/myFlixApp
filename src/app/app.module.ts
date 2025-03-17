@@ -17,7 +17,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { LoginViewComponent } from './login-view/login-view.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
+const appRoutes: Routes = [
+  {path: 'welcome', component: WelcomePageComponent},
+  {path: 'movies', component: MovieCardComponent},
+  {path: ' ', redirectTo: 'welcome', pathMatch: 'prefix'}
+]
 @NgModule({
   imports: [
     BrowserModule,
