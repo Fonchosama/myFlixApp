@@ -7,20 +7,21 @@ import { MatDialog } from '@angular/material/dialog';
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.scss'],
-  standalone: true,
+  standalone: false, // REN: Because of recent version update, we need explictly set standalone:false to jump to NGMODULE method.
+  // REN: If No Standalone, then there is no need of IMPORTS here, so deleted
+  // REN: Did the same for all the other components as well
 })
 export class WelcomePageComponent implements OnInit {
-  constructor(public dialog: MatDialog) { }
-  ngOnInit(): void {
-  }
+  constructor(public dialog: MatDialog) {}
+  ngOnInit(): void {}
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
-      width: '280px'
+      width: '280px',
     });
   }
-openUserLoginDialog(): void {
+  openUserLoginDialog(): void {
     this.dialog.open(LoginViewComponent, {
-      width: '280px'
+      width: '280px',
     });
   }
 }

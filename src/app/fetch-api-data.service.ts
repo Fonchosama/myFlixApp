@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -7,17 +11,17 @@ import { catchError, map } from 'rxjs/operators';
 const apiUrl = 'https://gianflix-02d504c4ae81.herokuapp.com/';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserRegistrationService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
- // registration logic here
+  // registration logic here
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(apiUrl + 'users', userDetails).pipe(
-    catchError(this.handleError)
-    );
+    return this.http
+      .post(apiUrl + 'users', userDetails)
+      .pipe(catchError(this.handleError));
   }
 
   //User login logic here
@@ -34,12 +38,13 @@ export class UserRegistrationService {
           console.log('Login successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
-
   //Get all movies logic here
+  // REN: Get All movies is doing a POST call, it is supposed to GET movies, with the token.
+  // Please adjust this code.
 
   public getAllMovies(userDetails?: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
@@ -53,12 +58,12 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
   // Get one movie logic here
-
+  // REN: Same like above
   public getMovie(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
 
@@ -71,7 +76,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -89,7 +94,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -107,7 +112,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -125,7 +130,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -143,7 +148,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -161,7 +166,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -179,7 +184,7 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
@@ -197,11 +202,11 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
-  //Delete a movie from a user's list of favorites logic here 
+  //Delete a movie from a user's list of favorites logic here
 
   public deleteMovie(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
@@ -215,21 +220,18 @@ export class UserRegistrationService {
           console.log('Registration successful:', response);
           return response;
         }),
-        catchError(this.handleError),
+        catchError(this.handleError)
       );
   }
 
-
-
-private handleError(error: HttpErrorResponse): any {
+  private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
-    console.error('Some error occurred:', error.error.message);
+      console.error('Some error occurred:', error.error.message);
     } else {
-    console.error(
-        `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`);
+      console.error(
+        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+      );
     }
-    return throwError(
-    'Something bad happened; please try again later.');
+    return throwError('Something bad happened; please try again later.');
   }
 }
