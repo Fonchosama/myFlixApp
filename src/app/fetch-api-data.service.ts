@@ -47,11 +47,10 @@ export class UserRegistrationService {
   // Please adjust this code.
 
   public getAllMovies(userDetails?: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
+    const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + 'u', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      .get(apiUrl + 'movies', {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
       })
       .pipe(
         map((response) => {

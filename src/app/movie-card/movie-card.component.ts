@@ -17,13 +17,14 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies();
+    this.getAllMovies();
   }
 
-  getMovies(): void {
+  getAllMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
       console.log(this.movies);
+      return this.movies;
     });
   }
 }
