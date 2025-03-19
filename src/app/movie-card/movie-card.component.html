@@ -1,4 +1,11 @@
 <!-- src/app/movie-card/movie-card.component.html -->
+
+<mat-toolbar color="primary" style="display: flex; justify-content: space-between;">
+    <span>My Flix</span>
+    <button mat-icon-button [routerLink]="'/profile'">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+</mat-toolbar>
 <div style="display: flex;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
         <mat-card-header>
@@ -23,7 +30,7 @@
                 mat-button
                 color="primary"
             >
-                Synopsis
+                Description
             </button>
             <span style="flex-grow: 1;"></span>
             <mat-icon>favorite_border</mat-icon>
