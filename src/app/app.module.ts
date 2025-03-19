@@ -21,6 +21,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import {MatIconModule} from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     MovieCardComponent,
     UserProfileComponent,
+    MovieGenreComponent,
   ],
   imports: [
     BrowserModule,
