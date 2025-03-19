@@ -17,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { LoginViewComponent } from './login-view/login-view.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import {MatIconModule} from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -25,7 +24,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
-  {path: 'profile', component: UserProfileComponent},
+  {path: 'profile', component: UserProfileComponent}, //
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
 ];
 
@@ -54,7 +53,7 @@ const appRoutes: Routes = [
     MatIconModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [],
   bootstrap: [AppComponent], // REN: Need to bootstrap the AppComponent from here, instead of `main.ts`
 })
 export class AppModule {}
