@@ -64,10 +64,9 @@ export class UserRegistrationService {
   // Get one movie logic here
   // REN: Same like above
   public getMovie(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
+    const token = localStorage.getItem('token'); 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .get(apiUrl + `movies/{movieId}`,{
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
