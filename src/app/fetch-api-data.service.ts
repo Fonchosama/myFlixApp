@@ -98,20 +98,15 @@ export class UserRegistrationService {
 
   //Get genre logic here
 
-  public getGenre(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
+  public getGenre(): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + 'users', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response) => {
-          console.log('Registration successful:', response);
-          return response;
-        }),
-        catchError(this.handleError)
-      );
+    .get(apiUrl + 'movies/genre/:Name', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token,
+      }),
+    })
+    .pipe(catchError(this.handleError));
   }
 
   //Get user logic here
@@ -138,7 +133,7 @@ export class UserRegistrationService {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .get(apiUrl + 'users', userDetails, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
