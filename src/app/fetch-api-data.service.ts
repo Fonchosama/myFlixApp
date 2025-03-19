@@ -133,7 +133,7 @@ export class UserRegistrationService {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
-      .get(apiUrl + 'users', userDetails, {
+      .post(apiUrl + 'users', userDetails, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
