@@ -19,6 +19,7 @@ import { LoginViewComponent } from './login-view/login-view.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import {MatIconModule} from '@angular/material/icon';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
+    MatIconModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [provideAnimationsAsync()],
