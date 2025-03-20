@@ -115,7 +115,7 @@ export class UserRegistrationService {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .get(apiUrl + 'users', {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(

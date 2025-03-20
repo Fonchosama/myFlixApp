@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent {
-
+NGOnInit(): void {
+  
+}
 }
