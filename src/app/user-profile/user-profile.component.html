@@ -1,1 +1,39 @@
-<p>user-profile works!</p>
+<mat-toolbar color="primary" style="display: flex; justify-content: space-between;">
+    <span>My Flix</span>
+    <button mat-icon-button [routerLink]="'/profile'">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+</mat-toolbar>
+<div style="display: flex;">
+    <mat-card *ngFor="let users of users;" style="flex: 1 1 auto;">
+        <mat-card-header>
+        <mat-card-title>{{users}}</mat-card-title>
+            <mat-card-subtitle>Directed by: {{users.Username}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <button
+            mat-button
+          
+            color="primary"
+            >
+                Genre
+            </button>
+            <button
+            mat-button
+    
+            color="primary"
+            >
+                Director
+            </button>
+            <button
+                mat-button
+             
+                color="primary"
+            >
+                Description
+            </button>
+            <span style="flex-grow: 1;"></span>
+            <mat-icon>favorite_border</mat-icon>
+        </mat-card-actions>
+    </mat-card>
+</div>

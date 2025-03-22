@@ -43,8 +43,6 @@ export class UserRegistrationService {
   }
 
   //Get all movies logic here
-  // REN: Get All movies is doing a POST call, it is supposed to GET movies, with the token.
-  // Please adjust this code.
 
   public getAllMovies(userDetails?: any): Observable<any> {
     const token = localStorage.getItem('token');
@@ -61,107 +59,22 @@ export class UserRegistrationService {
       );
   }
 
-  // Get one movie logic here
-  // REN: Same like above
-  public getMovie(userDetails: any): Observable<any> {
-    const token = localStorage.getItem('token'); 
-    return this.http
-      .get(apiUrl + `movies/{movieId}`,{
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response) => {
-          console.log('Registration successful:', response);
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
+// Get user logic here 
 
-  //Get director logic here ...
-
-  public getDirector(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
-    return this.http
-      .post(apiUrl + 'users', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response) => {
-          console.log('Registration successful:', response);
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
-
-  //Get genre logic here
-
-  public getGenre(): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http
-    .get(apiUrl + 'movies/genre/:Name', {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
-      }),
+public getUser(userDetails?: any): Observable<any> {
+  const token = localStorage.getItem('token');
+  return this.http
+    .get(apiUrl + 'users', {
+      headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
     })
-    .pipe(catchError(this.handleError));
-  }
-
-  //Get user logic here
-
-  public getUser(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
-    return this.http
-      .get(apiUrl + 'users', {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response) => {
-          console.log('Registration successful:', response);
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
-
-  //Get favorite movies for a user logic here
-
-  public getFavoriteMovies(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
-    return this.http
-      .post(apiUrl + 'users', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response) => {
-          console.log('Registration successful:', response);
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
-
-  //add a movie to a user's list of favorites logic here
-
-  public addFavoriteMovie(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
-
-    return this.http
-      .post(apiUrl + 'users', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response) => {
-          console.log('Registration successful:', response);
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
+    .pipe(
+      map((response) => {
+        console.log('Registration successful:', response);
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+}
 
   //Edit user logic here
 
@@ -184,6 +97,24 @@ export class UserRegistrationService {
   //Delete user logic here
 
   public deleteUser(userDetails: any): Observable<any> {
+    console.log('Attempting to register with:', userDetails);
+
+    return this.http
+      .post(apiUrl + 'users', userDetails, {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      })
+      .pipe(
+        map((response) => {
+          console.log('Registration successful:', response);
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  //add a movie to a user's list of favorites logic here
+
+  public addFavoriteMovie(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
