@@ -82,7 +82,7 @@ public getUser(userDetails?: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .post(apiUrl + 'users/${localUser.Username}', userDetails, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
