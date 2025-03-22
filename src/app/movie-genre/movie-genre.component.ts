@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { UserRegistrationService } from '../fetch-api-data.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie-genre',
@@ -10,16 +8,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './movie-genre.component.scss'
 })
 export class MovieGenreComponent {
-
   constructor(
-    public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<MovieGenreComponent>,
-    public snackBar: MatSnackBar
+    // pass the entire movie object to dialog as data
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit(): void {}
-
- 
+  // Close the dialog
+  closeDialog(): void {
+    this.dialogRef.close();
   }
-
+}
 

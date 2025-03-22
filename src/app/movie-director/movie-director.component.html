@@ -1,1 +1,9 @@
-<p>movie-director works!</p>
+<div class="container">
+    <h1 mat-dialog-title>{{ data.Director.Name }}</h1>
+    <div mat-dialog-content>
+      <p><strong>Description:</strong> {{ data.Director.Bio }}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="closeDialog()">Close</button>
+    </div>
+  </div>

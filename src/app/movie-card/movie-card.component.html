@@ -15,20 +15,22 @@
         <img src={{movie.ImagePath}} height="500"  alt= {{movie.Title}} />
         <mat-card-actions>
             <button
-                mat-button
-                color="primary"
+            mat-button
+            (click)="openGenreDialog(movie)"
+            color="primary"
             >
                 Genre
             </button>
             <button
-                mat-button
-                color="primary"
+            mat-button
+            (click)="openDirectorDialog(movie)"
+            color="primary"
             >
                 Director
             </button>
             <button
                 mat-button
-                (click)="openSynopsisDialog(movie)"
+                (click)="openDescriptionDialog(movie)"
                 color="primary"
             >
                 Description

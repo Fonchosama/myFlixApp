@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MovieDescriptionComponent } from '../movie-description/movie-description.component';
+import { MovieGenreComponent } from '../movie-genre/movie-genre.component';
+import { MovieDirectorComponent } from '../movie-director/movie-director.component';
+
 
 @Component({
   selector: 'app-movie-card',
@@ -31,11 +34,26 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-    // Function to open the synopsis dialog
-    openSynopsisDialog(movie: any): void {
+    // Function to open the description dialog
+    openDescriptionDialog(movie: any): void {
       this.dialog.open(MovieDescriptionComponent, {
         data: movie, // Pass the entire movie object to the dialog
         width: '500px',
       });
     }
+       // Function to open the genre dialog
+       openGenreDialog(movie: any): void {
+        this.dialog.open(MovieGenreComponent, {
+          data: movie, // Pass the entire movie object to the dialog
+          width: '500px',
+        });}
+
+          // Function to open the director dialog
+   openDirectorDialog(movie: any): void {
+      this.dialog.open(MovieDirectorComponent, {
+        data: movie, // Pass the entire movie object to the dialog
+        width: '500px',
+      });
+  }
+
 }
