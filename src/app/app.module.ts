@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
@@ -7,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 import { MovieDescriptionComponent } from './movie-description/movie-description.component';
 import { MovieDirectorComponent } from './movie-director/movie-director.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -44,12 +46,14 @@ const appRoutes: Routes = [
     MovieGenreComponent,
     MovieDescriptionComponent,
     MovieDirectorComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatInputModule,

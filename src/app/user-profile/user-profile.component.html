@@ -5,18 +5,26 @@
     </button>
 </mat-toolbar>
 <div>
-    <mat-card *ngFor="let users of users;" style="flex: 1 1 auto;">
+    <mat-card  style="flex: 1 1 auto;">
         <mat-card-header>
-        <mat-card-title>{{users.Username}}</mat-card-title>
-            <mat-card-subtitle>Directed by: {{users.Username}}</mat-card-subtitle>
-            <mat-card-subtitle>Directed by: {{users._id}}</mat-card-subtitle>
-            <mat-card-subtitle>Directed by: {{users.Email}}</mat-card-subtitle>
-            <mat-card-subtitle>Directed by: {{users.Birthdate}}</mat-card-subtitle>
-            <mat-card-subtitle>Directed by: {{users.Favorites}}</mat-card-subtitle>
+        <mat-card-title>{{user.Username}}</mat-card-title>
+            <mat-card-subtitle>Directed by: {{user.Username}}</mat-card-subtitle>
+            <mat-card-subtitle>Directed by: {{user._id}}</mat-card-subtitle>
+            <mat-card-subtitle>Directed by: {{user.Email}}</mat-card-subtitle>
+            <mat-card-subtitle>Directed by: {{user.Birthdate}}</mat-card-subtitle>
+            <mat-card-subtitle>Directed by: {{user.Favorites}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-actions>
-            <span style="flex-grow: 1;"></span>
-            <mat-icon>favorite_border</mat-icon>
-        </mat-card-actions>
+            <button class="updateBtn" color="primary" (click)="openUpdateDialog()">
+              Update Profile
+            </button>
+            <button class="logoutBtn" (click)="deleteAccount()">
+              Delete Account
+            </button>
+          </mat-card-actions>
     </mat-card>
+</div>
+
+<div>
+    <h2>Favorite Movies List</h2>
 </div>

@@ -61,10 +61,10 @@ export class UserRegistrationService {
 
 // Get user logic here 
 
-public getUser(userDetails?: any): Observable<any> {
+public getUser(username: String): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http
-    .get(apiUrl + 'users', {
+    .get(apiUrl + `users/${username}`, {
       headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
     })
     .pipe(
@@ -80,10 +80,13 @@ public getUser(userDetails?: any): Observable<any> {
 
   public editUser(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
-
+    const token: String | null = localStorage.getItem('token');
+    const userObj: string | null = localStorage.getItem('currenUser');
+    const user = userObj ? JSON.parse(userObj) : null;
+  
     return this.http
-      .post(apiUrl + 'users/${localUser.Username}', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      .put(apiUrl + `users/${user.Username}`, userDetails, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
       })
       .pipe(
         map((response) => {
@@ -96,11 +99,10 @@ public getUser(userDetails?: any): Observable<any> {
 
   //Delete user logic here
 
-  public deleteUser(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
+  public deleteUser(username: String): Observable<any> {
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
+      .delete(apiUrl +`users/${username}`, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
       })
       .pipe(
