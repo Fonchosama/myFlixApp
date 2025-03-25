@@ -4,6 +4,10 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
 
+/**
+ * Component for handling user login.
+ */
+
 @Component({
   selector: 'app-login-view',
   templateUrl: './login-view.component.html',
@@ -11,7 +15,19 @@ import { Router, RouterModule } from '@angular/router';
   standalone: false,
 })
 export class LoginViewComponent {
+
+    /**
+   * User data object containing username and password.
+   */
   @Input() userData = { Username: '', Password: '' };
+
+  /**
+   * Creates an instance of LoginViewComponent.
+   * @param fetchApiData - Service for user authentication.
+   * @param dialogRef - Reference to the dialog modal.
+   * @param snackBar - SnackBar for displaying messages.
+   * @param router - Router for navigation.
+   */
 
   constructor(
     public fetchApiData: UserRegistrationService,
@@ -20,7 +36,14 @@ export class LoginViewComponent {
     private router: Router
   ) {}
 
+  
   ngOnInit(): void {}
+    /**
+   * Handles user login by calling the authentication service.
+   * Stores user data and token in local storage upon success.
+   * Displays success or error message using SnackBar.
+   * Navigates to movies page on successful login.
+   */
   userLogin(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {
