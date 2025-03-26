@@ -3,6 +3,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
+/**
+ * Component responsible for handling user registration.
+ */
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
@@ -10,8 +14,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   standalone: false,
 })
 export class UserRegistrationFormComponent implements OnInit {
+   /**
+   * Object storing user registration data.
+   */
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+
+    /**
+   * Creates an instance of UserRegistrationFormComponent.
+   * @param fetchApiData Service for handling API requests related to user registration.
+   * @param dialogRef Reference to the dialog instance for closing the modal.
+   * @param snackBar Snackbar service for displaying notifications.
+   */
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -21,6 +35,10 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {}
 
   // This is the function responsible for sending the form inputs to the backend
+    /**
+   * Sends the user registration data to the backend.
+   * Closes the dialog and displays a notification on success or error.
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (result) => {

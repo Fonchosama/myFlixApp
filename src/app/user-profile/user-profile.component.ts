@@ -4,6 +4,10 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 import { Router } from '@angular/router';
 
+
+/**
+ * Component that handles user profile display, updates, and account deletion.
+ */
 @Component({
   selector: 'app-user-profile',
   standalone: false,
@@ -11,8 +15,17 @@ import { Router } from '@angular/router';
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent implements OnInit {
+    /**
+   * Stores the user data.
+   */
   user: any = {};
 
+    /**
+   * Creates an instance of UserProfileComponent.
+   * @param fetchApiData Service for handling API requests related to user data.
+   * @param dialog MatDialog instance for opening modals.
+   * @param router Router instance for navigation.
+   */
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,
@@ -23,7 +36,9 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
   }
-
+  /**
+   * Retrieves user data from local storage and fetches the latest info from the API.
+   */
   getUser(): void {
     const userObj: string | null = localStorage.getItem('currenUser');
     if (userObj) {
@@ -36,7 +51,10 @@ export class UserProfileComponent implements OnInit {
       });
     }
   }
-
+  /**
+   * Opens the update user dialog, passing the current user data.
+   * Updates the displayed user data after closing the dialog.
+   */
   openUpdateDialog(): void {
     const dialogRef = this.dialog.open(UpdateUserComponent, {
       width: '400px',
@@ -52,6 +70,9 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Logs out the user by removing local storage data and navigating to the welcome page.
+   */
   logout(): void {
     // Remove user data from local storage and navigate to welcome page
     localStorage.removeItem('token');
@@ -60,6 +81,10 @@ export class UserProfileComponent implements OnInit {
     this.router.navigate(['/welcome']);
   }
 
+  /**
+   * Deletes the user's account after confirmation.
+   * If successful, logs the user out and shows an alert.
+   */
   // deleteAccount function rewritten
   deleteAccount(): void {
     if (

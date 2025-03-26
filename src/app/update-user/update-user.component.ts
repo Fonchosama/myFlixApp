@@ -4,6 +4,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserRegistrationService } from '../fetch-api-data.service';
 
+
+/**
+ * Component that provides a form to update user information in a modal dialog.
+ */
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
@@ -13,7 +17,17 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 export class UpdateUserComponent {
   updateForm: FormGroup;
 
+
+    /**
+   * Creates an instance of UpdateUserComponent.
+   * @param dialogRef Reference to the dialog, used to close it.
+   * @param data Current user data passed to the dialog.
+   * @param fb FormBuilder instance for creating the reactive form.
+   * @param userRegistrationService Service for handling user data updates.
+   */
   constructor(
+
+    
     private dialogRef: MatDialogRef<UpdateUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, // Pass the current user data to dialog
     private fb: FormBuilder,
@@ -26,6 +40,11 @@ export class UpdateUserComponent {
     });
   }
 
+
+    /**
+   * Submits the form to update the user profile.
+   * If successful, updates local storage and closes the dialog with the updated data.
+   */
   onSubmit(): void {
     if (this.updateForm.valid) {
       this.userRegistrationService
