@@ -20,6 +20,11 @@ export class UserRegistrationService {
   constructor(private http: HttpClient) {}
 
   // registration logic here
+    /**
+   * Registers a new user.
+   * @param userDetails The user details for registration.
+   * @returns An observable containing the response.
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -28,7 +33,11 @@ export class UserRegistrationService {
   }
 
   //User login logic here
-
+  /**
+   * Logs in a user.
+   * @param userDetails The user's login credentials.
+   * @returns An observable containing the authentication response.
+   */
   public userLogin(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
 
@@ -46,7 +55,10 @@ export class UserRegistrationService {
   }
 
   //Get all movies logic here
-
+  /**
+   * Retrieves all movies.
+   * @returns An observable containing the list of movies.
+   */
   public getAllMovies(userDetails?: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -63,7 +75,11 @@ export class UserRegistrationService {
   }
 
 // Get user logic here 
-
+  /**
+   * Retrieves user details.
+   * @param username The username to retrieve data for.
+   * @returns An observable containing user data.
+   */
 public getUser(username: String): Observable<any> {
   const token = localStorage.getItem('token');
   return this.http
@@ -80,7 +96,11 @@ public getUser(username: String): Observable<any> {
 }
 
   //Edit user logic here
-
+  /**
+   * Updates user details.
+   * @param userDetails The updated user data.
+   * @returns An observable containing the response.
+   */
   public editUser(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
     const token: String | null = localStorage.getItem('token');
@@ -101,7 +121,11 @@ public getUser(username: String): Observable<any> {
   }
 
   //Delete user logic here
-
+  /**
+   * Deletes a user account.
+   * @param username The username of the account to delete.
+   * @returns An observable containing the response.
+   */
   public deleteUser(username: String): Observable<any> {
 
     return this.http
