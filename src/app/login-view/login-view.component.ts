@@ -47,7 +47,7 @@ export class LoginViewComponent {
   userLogin(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {
-        localStorage.setItem('currenUser', JSON.stringify(result.user));
+        localStorage.setItem('currentUser', JSON.stringify(result.user));
         localStorage.setItem('token', result.token);
         console.log(
           'the user has been logged in and the token was stored in the local storage'

@@ -59,7 +59,7 @@ export class UserRegistrationService {
    * Retrieves all movies.
    * @returns An observable containing the list of movies.
    */
-  public getAllMovies(userDetails?: any): Observable<any> {
+  public getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
       .get(apiUrl + 'movies', {
@@ -104,7 +104,7 @@ public getUser(username: String): Observable<any> {
   public editUser(userDetails: any): Observable<any> {
     console.log('Attempting to register with:', userDetails);
     const token: String | null = localStorage.getItem('token');
-    const userObj: string | null = localStorage.getItem('currenUser');
+    const userObj: string | null = localStorage.getItem('currentUser');
     const user = userObj ? JSON.parse(userObj) : null;
   
     return this.http
@@ -143,16 +143,18 @@ public getUser(username: String): Observable<any> {
 
   //add a movie to a user's list of favorites logic here
 
-  public addFavoriteMovie(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
+  public addFavoriteMovie(movieID: String): Observable<any> {
+    const token: String | null = localStorage.getItem('token');
+    const userObj: string | null = localStorage.getItem('currentUser');
+    const user = userObj ? JSON.parse(userObj) : null;
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      .patch(`${apiUrl}users/${user.Username}/movies/${movieID}`, null, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
       })
       .pipe(
         map((response) => {
-          console.log('Registration successful:', response);
+          console.log('Movie added to Favorite list successfully:', response);
           return response;
         }),
         catchError(this.handleError)
@@ -161,16 +163,18 @@ public getUser(username: String): Observable<any> {
 
   //Delete a movie from a user's list of favorites logic here
 
-  public deleteMovie(userDetails: any): Observable<any> {
-    console.log('Attempting to register with:', userDetails);
+  public deleteFavoriteMovie(movieID: String): Observable<any> {
+    const token: String | null = localStorage.getItem('token');
+    const userObj: string | null = localStorage.getItem('currentUser');
+    const user = userObj ? JSON.parse(userObj) : null;
 
     return this.http
-      .post(apiUrl + 'users', userDetails, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      .delete(`${apiUrl}users/${user.Username}/movies/${movieID}`, {
+        headers: new HttpHeaders({ Authorization: 'Bearer ' + token, }),
       })
       .pipe(
         map((response) => {
-          console.log('Registration successful:', response);
+          console.log('Movie removed from Favorite list successfully:', response);
           return response;
         }),
         catchError(this.handleError)

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { UpdateUserComponent } from '../update-user/update-user.component';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 /**
@@ -19,6 +20,7 @@ export class UserProfileComponent implements OnInit {
    * Stores the user data.
    */
   user: any = {};
+  favoriteMovies: any[] = [];
 
     /**
    * Creates an instance of UserProfileComponent.
@@ -29,7 +31,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,
-    public router: Router
+    public router: Router,
+    public snackBar: MatSnackBar
   ) {}
 
   // Automatically run when the component is initialized
@@ -40,13 +43,17 @@ export class UserProfileComponent implements OnInit {
    * Retrieves user data from local storage and fetches the latest info from the API.
    */
   getUser(): void {
-    const userObj: string | null = localStorage.getItem('currenUser');
+    const userObj: string | null = localStorage.getItem('currentUser');
     if (userObj) {
       const user = JSON.parse(userObj);
       console.log(user);
       this.fetchApiData.getUser(user.Username).subscribe((resp: any) => {
         this.user = resp;
-        console.log(this.user);
+        console.log(this.user.FavoriteMovies);
+        const favMoviesIDs = resp.FavoriteMovies;
+        this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+          this.favoriteMovies = resp.filter((mov: any) => favMoviesIDs.includes(mov._id))
+        })
         return this.user;
       });
     }
@@ -77,7 +84,7 @@ export class UserProfileComponent implements OnInit {
     // Remove user data from local storage and navigate to welcome page
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    localStorage.removeItem('currenUser');
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/welcome']);
   }
 
@@ -112,4 +119,31 @@ export class UserProfileComponent implements OnInit {
       );
     }
   }
+
+  // Toggle favorite status of a movie
+  deleteFavoriteMovie(movieId: string): void {
+      this.fetchApiData.deleteFavoriteMovie(movieId).subscribe(
+        () => {
+          this.favoriteMovies = this.favoriteMovies.filter(
+            (mov) => mov._id !== movieId
+          );
+          this.updateLocalStorageFavorites();
+          this.snackBar.open('Movie removed from favorites!', 'OK', {
+            duration: 2000,
+          });
+        },
+        (error) => {
+          console.error('Failed to remove favorite movie:', error);
+        }
+      );
+  }
+
+       // Update the favorites in local storage
+       updateLocalStorageFavorites(): void {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+        currentUser.FavoriteMovies = this.favoriteMovies.map(mov => mov._id);
+        console.log("Current Fav Movies Updated", currentUser.FavoriteMovies)
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      }
+    
 }
