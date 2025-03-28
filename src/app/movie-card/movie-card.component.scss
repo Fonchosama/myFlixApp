@@ -1,0 +1,58 @@
+/* Barra de navegación */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 px;
+  }
+  
+  /* Contenedor de películas con Grid */
+  .movie-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 100px; /* Espaciado entre tarjetas */
+    padding: 100px;
+    justify-items: center; /* Centra las tarjetas */
+  }
+  
+  /* Tarjetas de películas */
+  .movie-card {
+    width: 100%; /* Hace que las tarjetas ocupen todo el espacio disponible */
+    max-width: 280px; /* Controla el ancho máximo */
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Estilo para el título */
+  mat-card-title {
+    color: bisque;
+  }
+  
+  /* Imágenes */
+  .movie-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; /* Asegura que las imágenes se vean bien */
+  }
+  
+  /* Espaciador para botones */
+  .flex-spacer {
+    flex-grow: 1;
+  }
+  
+  /* Responsive: Ajustar columnas en pantallas más pequeñas */
+  @media (max-width: 1024px) {
+    .movie-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .movie-container {
+      grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas pequeñas */
+    }
+  }
+  
