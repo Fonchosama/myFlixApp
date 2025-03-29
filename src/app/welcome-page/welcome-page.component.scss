@@ -1,0 +1,27 @@
+/* Contenedor principal */
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo horizontalmente */
+    justify-content: center; /* Centra verticalmente si se usa en una altura específica */
+    height: 100vh; /* Ocupar toda la pantalla */
+    text-align: center;
+}
+
+/* Título */
+.main-title {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de botones */
+.button-container {
+    display: flex;
+    gap: 16px; /* Espacio uniforme entre botones */
+}
+
+/* Botones */
+button[mat-raised-button] {
+    min-width: 120px;
+}
