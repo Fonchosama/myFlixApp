@@ -6,12 +6,20 @@
     justify-content: center; /* Centra verticalmente si se usa en una altura específica */
     height: 100vh; /* Ocupar toda la pantalla */
     text-align: center;
+    background-color: steelblue;
 }
+
+/* fondo de la página */ 
+
+// body {
+//     background-color: steelblue;
+//   }
+  
 
 /* Título */
 .main-title {
-    font-size: 36px;
-    color: #ffffff;
+    font-size: 40px;
+    color: #0f1893;
     margin-bottom: 20px;
 }
 
