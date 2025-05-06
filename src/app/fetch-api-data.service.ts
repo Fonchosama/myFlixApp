@@ -8,7 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client
-const apiUrl = 'https://gianflix-02d504c4ae81.herokuapp.com/';
+const apiUrl = 'https://movie-api-aapq.onrender.com';
 
 /**
  * Service for handling user registration, login, and interactions with the API.
